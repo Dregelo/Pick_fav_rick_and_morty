@@ -1,0 +1,39 @@
+type Dispatch = React.Dispatch<IAction>;
+
+interface IState {
+  episodes: Array<IEpisode>;
+  favourites: Array<IEpisode>;
+}
+
+interface IAction {
+  type: string;
+  payload: Array<IEpisode> | any;
+}
+
+interface IEpisode {
+  airdate: string;
+  airstamp: string;
+  airtime: string;
+  id: number;
+  image: {
+    medium: string;
+    original: string;
+  };
+  name: string;
+  number: number;
+  runtime: number;
+  season: number;
+  summary: string;
+  url: string;
+}
+
+interface IEpisodeProps {
+  episodes: IEpisode[];
+  store: { state: IState; dispatch: Dispatch };
+  toggleFavAction: (
+    state: IState,
+    dispatch: Dispatch,
+    episode: IEpisode
+  ) => IAction;
+  favourites: IEpisode[];
+}
